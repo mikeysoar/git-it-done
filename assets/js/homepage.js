@@ -13,6 +13,9 @@ var formSubmitHandler = function (event) {
 
     if (username) {
         getUserRepos(username);
+
+        // clear oldcontent
+        repoContainerEl.textContent = "";
         nameInputEl.value = "";
     } else {
         alert("Please enter a GitHub username");
@@ -62,7 +65,7 @@ var getFeaturedRepos = function (language) {
                 displayRepos(data.items, language);
             });
         } else {
-            alert('Error: GitHub User Not Found');
+            alert("Error: " + response.statusText);
         }
     });
 };
